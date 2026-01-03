@@ -1,0 +1,102 @@
+HONEST FOSTER - LICENSE AND COPYRIGHT NOTICE
+
+================================================================================
+
+COPYRIGHT © 2026 ADENIKE OMOREGBEE. ALL RIGHTS RESERVED.
+
+================================================================================
+
+PROPRIETARY INFORMATION
+
+This software tool and its associated methodology, framework, content, and 
+documentation (collectively, the "Work") are the proprietary intellectual 
+property of Adenike Omoregbee.
+
+PROTECTED ELEMENTS
+
+The following components are protected by copyright and may not be reproduced,
+distributed, modified, or used commercially without explicit written permission:
+
+1. The HONEST FOSTER methodology and operational framework
+2. The Decision Tree workflow system and intelligent routing logic
+3. The Voice Palette system including all five voice tones:
+   - Grounded Voice (Protective Advocate)
+   - Analytical Voice (Systems Analyst)
+   - Poetic Voice (Meaning-Maker)
+   - Catalyst Voice (Action Catalyst)
+   - Calm Voice (Mindful Calm)
+4. The 8-Beat Structure for content creation
+5. The Liminal Space Principle and associated philosophy
+6. All command architecture and safety guardrail systems
+7. All example content, scripts, and templates
+8. The META-RULE framework
+9. All accompanying documentation and educational materials
+
+RESTRICTIONS
+
+WITHOUT EXPLICIT WRITTEN PERMISSION, YOU MAY NOT:
+
+- Use this Work for commercial purposes or resale
+- Create derivative works based on this methodology
+- Reproduce, distribute, or publish the framework or its components
+- Rebrand, white-label, or claim authorship of this Work
+- Train artificial intelligence systems on this proprietary methodology
+- Remove or obscure copyright notices
+- Sublicense or transfer rights to third parties
+
+PERMITTED USE
+
+Organizations and individuals may use this tool for their own foster care 
+recruitment efforts, provided that:
+
+- The copyright notice remains intact and visible
+- No commercial redistribution or resale occurs
+- Proper attribution is given to Adenike Omoregbee
+- The tool is not modified for commercial purposes or resale
+- Use aligns with the ethical principles of the framework
+
+ATTRIBUTION REQUIREMENTS
+
+Any public use, reference, or discussion of this Work must include proper 
+attribution:
+
+"HONEST FOSTER - Created by Adenike Omoregbee"
+
+DISCLAIMER
+
+THIS WORK IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+PARTICULAR PURPOSE, AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER
+BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF 
+THIS WORK.
+
+LICENSING INQUIRIES
+
+For licensing, partnership opportunities, custom implementations, training, or
+permission requests, please contact:
+
+Adenike Omoregbee
+Email: [Contact information to be provided]
+
+ENFORCEMENT
+
+Unauthorized use of this proprietary Work may result in legal action to protect
+intellectual property rights.
+
+================================================================================
+
+CREATOR'S NOTE
+
+This framework represents years of lived experience as a foster carer, nearly
+two decades of professional care work, and specialized expertise in foster care
+systems. It was created to prevent the harm caused when marketing teams create
+recruitment content without operational understanding of care work.
+
+The methodology is grounded in practitioner knowledge and exists to make 
+children safer through better-prepared carers. Please respect the intellectual
+property rights that protect this work.
+
+================================================================================
+
+Last Updated: January 2026
+Version: 1.0
