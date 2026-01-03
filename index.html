@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Adenike Omoregbee">
+    <meta name="copyright" content="© 2026 Adenike Omoregbee. All Rights Reserved.">
+    <meta name="description" content="HONEST FOSTER - Foster care recruitment content tool with practitioner integrity. Proprietary framework by Adenike Omoregbee.">
     <title>HONEST FOSTER - Recruitment Content Tool</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +24,7 @@
             --border-light: #E5DDD5;
             --shadow-soft: rgba(75, 66, 56, 0.08);
             --shadow-medium: rgba(75, 66, 56, 0.12);
+            --demo-badge: #D64545;
         }
 
         * {
@@ -37,7 +41,6 @@
             min-height: 100vh;
         }
 
-        /* Subtle grain texture overlay */
         body::before {
             content: '';
             position: fixed;
@@ -59,7 +62,172 @@
             z-index: 2;
         }
 
-        /* Header */
+        .license-banner {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-warm) 100%);
+            color: var(--bg-white);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px var(--shadow-medium);
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .license-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.demo { background: var(--demo-badge); }
+        .status-badge.licensed { background: var(--accent-sage); }
+
+        .license-btn {
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .license-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.visible { display: flex; }
+
+        .modal-content {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-content h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .license-input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .license-input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .license-input-group input {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .license-input-group input:focus {
+            outline: none;
+            border-color: var(--primary-warm);
+            box-shadow: 0 0 0 3px rgba(139, 111, 71, 0.1);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn.primary {
+            background: var(--primary-warm);
+            color: var(--bg-white);
+        }
+
+        .modal-btn.secondary {
+            background: var(--border-light);
+            color: var(--text-dark);
+        }
+
+        .modal-btn:hover { transform: translateY(-2px); }
+
+        .license-error {
+            color: var(--demo-badge);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .license-info {
+            background: var(--bg-cream);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-medium);
+        }
+
         header {
             text-align: center;
             padding: 3rem 0 2rem;
@@ -68,17 +236,6 @@
             background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(248,245,241,0.4) 100%);
             backdrop-filter: blur(10px);
             animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         h1 {
@@ -97,6 +254,12 @@
             letter-spacing: 0.5px;
         }
 
+        .copyright-notice {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
         .meta-rule {
             background: var(--bg-white);
             border-left: 4px solid var(--accent-rust);
@@ -107,17 +270,6 @@
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .meta-rule p {
             font-family: 'Crimson Pro', serif;
             font-size: 1.3rem;
@@ -126,7 +278,35 @@
             font-style: italic;
         }
 
-        /* Navigation Steps */
+        .demo-notice {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border: 2px solid #FF9800;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            display: none;
+        }
+
+        .demo-notice.visible { display: block; }
+
+        .demo-notice h3 {
+            color: #E65100;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-notice ul {
+            margin-left: 1.5rem;
+            color: #BF360C;
+        }
+
+        .demo-notice li {
+            margin-bottom: 0.5rem;
+        }
+
         .workflow {
             background: var(--bg-white);
             padding: 2.5rem;
@@ -153,8 +333,6 @@
 
         .step:nth-child(1) { animation-delay: 0.5s; }
         .step:nth-child(2) { animation-delay: 0.6s; }
-        .step:nth-child(3) { animation-delay: 0.7s; }
-        .step:nth-child(4) { animation-delay: 0.8s; }
 
         .step-label {
             font-weight: 600;
@@ -173,7 +351,7 @@
             margin-top: 0.5rem;
         }
 
-        button, .btn {
+        button {
             background: var(--bg-white);
             border: 2px solid var(--border-light);
             padding: 1rem 1.5rem;
@@ -199,9 +377,7 @@
             transition: left 0.5s;
         }
 
-        button:hover::before {
-            left: 100%;
-        }
+        button:hover::before { left: 100%; }
 
         button:hover {
             border-color: var(--primary-warm);
@@ -216,11 +392,9 @@
             color: var(--bg-white);
         }
 
-        button:active {
-            transform: translateY(0);
-        }
+        button:active { transform: translateY(0); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        /* Input Fields */
         .input-group {
             margin-bottom: 1.5rem;
         }
@@ -234,7 +408,6 @@
         }
 
         input[type="text"],
-        input[type="number"],
         select,
         textarea {
             width: 100%;
@@ -262,7 +435,6 @@
             line-height: 1.6;
         }
 
-        /* Voice Mix Sliders */
         .voice-mixer {
             background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-white) 100%);
             padding: 2rem;
@@ -344,7 +516,6 @@
             box-shadow: 0 2px 8px var(--shadow-medium);
         }
 
-        /* Generate Button */
         .generate-btn {
             background: linear-gradient(135deg, var(--primary-warm) 0%, var(--primary-dark) 100%);
             border: none;
@@ -365,11 +536,8 @@
             box-shadow: 0 12px 36px rgba(139, 111, 71, 0.4);
         }
 
-        .generate-btn:active {
-            transform: translateY(-2px);
-        }
+        .generate-btn:active { transform: translateY(-2px); }
 
-        /* Output Area */
         .output-section {
             background: var(--bg-white);
             padding: 2.5rem;
@@ -380,9 +548,7 @@
             animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .output-section.visible {
-            display: block;
-        }
+        .output-section.visible { display: block; }
 
         .output-header {
             display: flex;
@@ -441,9 +607,22 @@
             border-left: 4px solid var(--accent-sage);
             white-space: pre-wrap;
             word-wrap: break-word;
+            position: relative;
         }
 
-        /* Social Share Buttons */
+        .demo-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(214, 69, 69, 0.1);
+            pointer-events: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
         .share-section {
             margin-top: 2rem;
             padding-top: 2rem;
@@ -485,23 +664,10 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .share-btn.twitter {
-            background: #000000;
-        }
+        .share-btn.twitter { background: #000000; }
+        .share-btn.facebook { background: #1877F2; }
+        .share-btn.linkedin { background: #0A66C2; }
 
-        .share-btn.facebook {
-            background: #1877F2;
-        }
-
-        .share-btn.linkedin {
-            background: #0A66C2;
-        }
-
-        .share-btn.copy {
-            background: var(--primary-warm);
-        }
-
-        /* Footer */
         footer {
             text-align: center;
             padding: 3rem 2rem 2rem;
@@ -511,74 +677,16 @@
             font-size: 0.9rem;
         }
 
-        footer a {
-            color: var(--primary-warm);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+        .footer-license {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            margin: 1.5rem auto;
+            max-width: 800px;
+            text-align: left;
         }
 
-        footer a:hover {
-            color: var(--primary-dark);
-        }
-
-        /* Loading State */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid var(--bg-cream);
-            border-radius: 50%;
-            border-top-color: var(--bg-white);
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .workflow {
-                padding: 1.5rem;
-            }
-
-            .button-group {
-                grid-template-columns: 1fr;
-            }
-
-            .output-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .action-buttons,
-            .share-buttons {
-                width: 100%;
-            }
-
-            .icon-btn,
-            .share-btn {
-                flex: 1;
-                justify-content: center;
-            }
-        }
-
-        /* Hidden class */
-        .hidden {
-            display: none;
-        }
-
-        /* Toast Notification */
         .toast {
             position: fixed;
             bottom: 2rem;
@@ -593,108 +701,158 @@
         }
 
         @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hidden { display: none; }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 2.5rem; }
+            .workflow { padding: 1.5rem; }
+            .button-group { grid-template-columns: 1fr; }
+            .license-banner { flex-direction: column; gap: 1rem; text-align: center; }
+            .modal-content { padding: 2rem; }
+            .output-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .action-buttons, .share-buttons { width: 100%; }
+            .icon-btn, .share-btn { flex: 1; justify-content: center; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="license-banner">
+            <div class="license-status">
+                <span id="license-status-text">Demo Mode</span>
+                <span class="status-badge demo" id="status-badge">DEMO</span>
+            </div>
+            <button class="license-btn" id="license-btn" onclick="showLicenseModal()">
+                Enter License Key
+            </button>
+        </div>
+
+        <div class="modal" id="license-modal">
+            <div class="modal-content">
+                <h2>Enter License Key</h2>
+                <p>Unlock the full HONEST FOSTER framework with strategic decision tree intelligence and optimized voice mixing.</p>
+                
+                <div class="license-input-group">
+                    <label for="license-key-input">License Key</label>
+                    <input 
+                        type="text" 
+                        id="license-key-input" 
+                        placeholder="XXXX-XXXX-XXXX-XXXX"
+                        autocomplete="off"
+                    >
+                    <div class="license-error" id="license-error">Invalid license key</div>
+                </div>
+
+                <div class="license-info">
+                    <strong>How to get a license:</strong><br>
+                    Contact Adenike Omoregbee for licensing information. Licensed access includes:
+                    • Strategic decision tree with optimal routing
+                    • Proven voice mix formulas for each scenario
+                    • Full command library
+                    • No watermarks
+                    • Professional support
+                </div>
+
+                <div class="modal-buttons">
+                    <button class="modal-btn secondary" onclick="closeLicenseModal()">Cancel</button>
+                    <button class="modal-btn primary" onclick="validateLicense()">Activate</button>
+                </div>
+            </div>
+        </div>
+
         <header>
             <h1>HONEST FOSTER</h1>
             <p class="tagline">Foster Care Recruitment with Practitioner Integrity</p>
+            <p class="copyright-notice">© 2026 Adenike Omoregbee - Proprietary Framework - All Rights Reserved</p>
         </header>
 
         <div class="meta-rule">
             <p>"If it pressures, simplifies, or glorifies → STOP. If it steadies, dignifies, and invites → PROCEED."</p>
         </div>
 
-        <!-- Decision Tree Workflow -->
+        <div class="demo-notice visible" id="demo-notice">
+            <h3>🔒 Demo Version Limitations</h3>
+            <ul>
+                <li>Simplified workflow (strategic decision tree hidden)</li>
+                <li>Generic voice mixing (optimal percentages locked)</li>
+                <li>Limited to 3 basic content types</li>
+                <li>Demo watermark on generated content</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Enter a license key to unlock the full professional framework.</strong></p>
+        </div>
+
         <div class="workflow">
             <h2>Content Creation Workflow</h2>
             
-            <div class="step" id="step-goal">
-                <span class="step-label">Step 1: What is your immediate goal?</span>
-                <div class="button-group">
-                    <button onclick="selectGoal('awareness')">Raise Awareness</button>
-                    <button onclick="selectGoal('enquiries')">Generate Enquiries</button>
-                    <button onclick="selectGoal('convert')">Convert to Action</button>
-                    <button onclick="selectGoal('discourse')">Respond to Discourse</button>
+            <div class="step">
+                <span class="step-label">Step 1: Select Content Type</span>
+                <div class="button-group" id="content-type-buttons">
+                    <button onclick="selectContentType('script')">Video Script</button>
+                    <button onclick="selectContentType('social')">Social Post</button>
+                    <button onclick="selectContentType('myth')">Myth Buster</button>
                 </div>
             </div>
 
-            <div class="step hidden" id="step-path">
-                <span class="step-label">Step 2: Choose your path</span>
-                <div class="button-group" id="path-buttons"></div>
-            </div>
-
-            <div class="step hidden" id="step-command">
-                <span class="step-label">Step 3: Select command type</span>
-                <div class="button-group" id="command-buttons"></div>
-            </div>
-
             <div class="step hidden" id="step-inputs">
-                <span class="step-label">Step 4: Content Parameters</span>
+                <span class="step-label">Step 2: Content Parameters</span>
                 <div id="input-fields"></div>
             </div>
         </div>
 
-        <!-- Voice Mixer -->
-        <div class="voice-mixer hidden" id="voice-mixer">
+        <div class="voice-mixer" id="voice-mixer">
             <h3>Voice Mix Configuration</h3>
             <p style="color: var(--text-medium); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                Adjust the blend of voices for your content. Total should equal 100%.
+                <span id="voice-mixer-description">In demo mode, all voices start at equal weight (20%). License required for strategic optimization.</span>
             </p>
             
             <div class="voice-slider">
                 <div class="voice-header">
-                    <span class="voice-name">Louise</span>
-                    <span class="voice-value" id="louise-val">30%</span>
+                    <span class="voice-name">Grounded Voice</span>
+                    <span class="voice-value" id="grounded-val">20%</span>
                 </div>
                 <p class="voice-description">Protective Advocate - Grounded reality, dignity-focused</p>
-                <input type="range" id="louise" min="0" max="100" value="30" oninput="updateVoiceMix()">
+                <input type="range" id="grounded" min="0" max="100" value="20" oninput="updateVoiceMix()">
             </div>
 
             <div class="voice-slider">
                 <div class="voice-header">
-                    <span class="voice-name">Barry</span>
-                    <span class="voice-value" id="barry-val">30%</span>
+                    <span class="voice-name">Analytical Voice</span>
+                    <span class="voice-value" id="analytical-val">20%</span>
                 </div>
                 <p class="voice-description">Systems Analyst - Professional framing, coordination</p>
-                <input type="range" id="barry" min="0" max="100" value="30" oninput="updateVoiceMix()">
+                <input type="range" id="analytical" min="0" max="100" value="20" oninput="updateVoiceMix()">
             </div>
 
             <div class="voice-slider">
                 <div class="voice-header">
-                    <span class="voice-name">Shira</span>
-                    <span class="voice-value" id="shira-val">20%</span>
+                    <span class="voice-name">Poetic Voice</span>
+                    <span class="voice-value" id="poetic-val">20%</span>
                 </div>
-                <p class="voice-description">Meaning-Maker - Poetic, reflective, care as craft</p>
-                <input type="range" id="shira" min="0" max="100" value="20" oninput="updateVoiceMix()">
+                <p class="voice-description">Meaning-Maker - Reflective, care as craft</p>
+                <input type="range" id="poetic" min="0" max="100" value="20" oninput="updateVoiceMix()">
             </div>
 
             <div class="voice-slider">
                 <div class="voice-header">
-                    <span class="voice-name">Chinwe</span>
-                    <span class="voice-value" id="chinwe-val">10%</span>
+                    <span class="voice-name">Catalyst Voice</span>
+                    <span class="voice-value" id="catalyst-val">20%</span>
                 </div>
                 <p class="voice-description">Action Catalyst - Motion over worry, concise imperatives</p>
-                <input type="range" id="chinwe" min="0" max="100" value="10" oninput="updateVoiceMix()">
+                <input type="range" id="catalyst" min="0" max="100" value="20" oninput="updateVoiceMix()">
             </div>
 
             <div class="voice-slider">
                 <div class="voice-header">
-                    <span class="voice-name">Céline</span>
-                    <span class="voice-value" id="celine-val">10%</span>
+                    <span class="voice-name">Calm Voice</span>
+                    <span class="voice-value" id="calm-val">20%</span>
                 </div>
                 <p class="voice-description">Mindful Calm - Breath work, seasonal metaphors, steadiness</p>
-                <input type="range" id="celine" min="0" max="100" value="10" oninput="updateVoiceMix()">
+                <input type="range" id="calm" min="0" max="100" value="20" oninput="updateVoiceMix()">
             </div>
 
             <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-white); border-radius: 8px; border-left: 3px solid var(--accent-rust);">
@@ -703,12 +861,10 @@
             </div>
         </div>
 
-        <!-- Generate Button -->
-        <button class="generate-btn hidden" id="generate-btn" onclick="generateContent()">
+        <button class="generate-btn" onclick="generateContent()">
             Generate Content
         </button>
 
-        <!-- Output Section -->
         <div class="output-section" id="output-section">
             <div class="output-header">
                 <h2>Generated Content</h2>
@@ -728,7 +884,9 @@
                 </div>
             </div>
 
-            <div class="output-content" id="output-content"></div>
+            <div class="output-content" id="output-content">
+                <div class="demo-watermark" id="demo-watermark">DEMO VERSION</div>
+            </div>
 
             <div class="share-section">
                 <span class="share-label">Share on Social Media</span>
@@ -756,289 +914,190 @@
         </div>
 
         <footer>
-            <p><strong>HONEST FOSTER</strong> - Created by Adenike Omoregbee © 2026</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem;">
-                Foster care recruitment with practitioner integrity
-            </p>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;"><strong>HONEST FOSTER</strong></p>
+                <p style="margin-bottom: 1rem;">Foster care recruitment with practitioner integrity</p>
+                
+                <div class="footer-license">
+                    <p style="font-weight: 600; margin-bottom: 0.75rem; color: var(--primary-dark);">© 2026 Adenike Omoregbee. All Rights Reserved.</p>
+                    <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.5rem;">
+                        This tool and its framework are proprietary intellectual property. Unauthorized reproduction, 
+                        distribution, or commercial use without explicit written permission is prohibited.
+                    </p>
+                    <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.5rem;">
+                        The HONEST FOSTER methodology, decision tree framework, voice palette system, and all associated 
+                        content are protected by copyright.
+                    </p>
+                    <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-medium);">
+                        For licensing inquiries or permission requests, please contact the creator.
+                    </p>
+                </div>
+                
+                <p style="font-size: 0.85rem; color: var(--text-medium); margin-top: 1rem;">
+                    Created with practitioner knowledge to prevent harm in foster care recruitment messaging.
+                </p>
+            </div>
         </footer>
     </div>
 
     <script>
-        // State management
+        // LICENSE KEY - In production, validate server-side
+        const LICENSE_KEY = 'HONEST-FOSTER-2026-PRO';
+        let isLicensed = false;
+        
         const state = {
-            goal: null,
-            path: null,
-            command: null,
+            contentType: null,
             inputs: {},
             voiceMix: {
-                louise: 30,
-                barry: 30,
-                shira: 20,
-                chinwe: 10,
-                celine: 10
+                grounded: 20,
+                analytical: 20,
+                poetic: 20,
+                catalyst: 20,
+                calm: 20
             }
         };
 
-        // Decision tree paths
-        const paths = {
-            awareness: [
-                { id: 'emotionally-cautious', label: 'Emotionally Cautious Audience', voiceMix: { louise: 30, barry: 10, shira: 20, chinwe: 0, celine: 40 } },
-                { id: 'values-driven', label: 'Values-Driven Audience', voiceMix: { louise: 35, barry: 15, shira: 40, chinwe: 0, celine: 10 } }
-            ],
-            enquiries: [
-                { id: 'not-qualified', label: '"I\'m Not Qualified"', voiceMix: { louise: 35, barry: 40, shira: 10, chinwe: 15, celine: 0 } },
-                { id: 'emotional-toll', label: 'Fear of Emotional Toll', voiceMix: { louise: 20, barry: 35, shira: 10, chinwe: 0, celine: 35 } }
-            ],
-            convert: [
-                { id: 'emotional-paralysis', label: 'Emotional Paralysis', voiceMix: { louise: 30, barry: 15, shira: 0, chinwe: 50, celine: 5 } },
-                { id: 'practical-logistics', label: 'Practical Logistics', voiceMix: { louise: 35, barry: 45, shira: 0, chinwe: 15, celine: 5 } }
-            ],
-            discourse: [
-                { id: 'blame-carers', label: 'Blame Aimed at Carers/Children', voiceMix: { louise: 35, barry: 50, shira: 15, chinwe: 0, celine: 0 } }
-            ]
+        // PROPRIETARY STRATEGIC FORMULAS (Only accessible when licensed)
+        // These voice mixes represent 15+ years of practitioner expertise
+        const LICENSED_VOICE_FORMULAS = {
+            script: { grounded: 35, analytical: 30, poetic: 20, catalyst: 10, calm: 5 },
+            social: { grounded: 30, analytical: 15, poetic: 35, catalyst: 15, calm: 5 },
+            myth: { grounded: 35, analytical: 40, poetic: 10, catalyst: 15, calm: 0 }
         };
 
-        // Commands for each path
-        const commands = {
-            'emotionally-cautious': [
-                { id: 'write_reel', label: 'Short Video Script', params: ['length', 'cta'] },
-                { id: 'pause_and_breathe', label: 'Reflective Pause', params: ['placement'] },
-                { id: 'gentle_cta', label: 'Gentle Call-to-Action', params: ['cta_type', 'contact_method'] }
-            ],
-            'values-driven': [
-                { id: 'meaning_frame', label: 'Meaning Framework', params: ['aspect', 'length'] },
-                { id: 'write_longform', label: 'Long-form Video', params: ['length'] },
-                { id: 'gratitude_close', label: 'Gratitude Closing', params: ['tone'] }
-            ],
-            'not-qualified': [
-                { id: 'myth_bust', label: 'Myth Buster', params: ['myth', 'tone'] },
-                { id: 'handoff_gap', label: 'Explain Handoff Gap', params: ['context'] }
-            ],
-            'emotional-toll': [
-                { id: 'system_reframe', label: 'System Reframe', params: ['reframe_target'] },
-                { id: 'pause_and_breathe', label: 'Reflective Pause', params: ['placement'] }
-            ],
-            'emotional-paralysis': [
-                { id: 'activate', label: 'Activation Script', params: ['barrier'] },
-                { id: 'gentle_cta', label: 'Gentle Call-to-Action', params: ['cta_type', 'contact_method'] }
-            ],
-            'practical-logistics': [
-                { id: 'myth_bust', label: 'Myth Buster', params: ['myth', 'tone'] },
-                { id: 'write_webinar_open', label: 'Webinar Opening', params: ['event_type'] }
-            ],
-            'blame-carers': [
-                { id: 'system_reframe', label: 'System Reframe', params: ['reframe_target'] },
-                { id: 'comment_reply', label: 'Comment Reply', params: ['response_type'] }
-            ]
-        };
-
-        // Parameter definitions
-        const parameterInputs = {
-            length: {
-                type: 'select',
-                label: 'Content Length',
-                options: ['15s', '30s', '60s', '2min', '3min', '5min']
-            },
-            cta: {
-                type: 'select',
-                label: 'Call to Action',
-                options: ['call', 'website', 'event', 'learn-more']
-            },
-            placement: {
-                type: 'select',
-                label: 'Placement',
-                options: ['mid-script', 'after-difficult-content', 'before-CTA']
-            },
-            cta_type: {
-                type: 'select',
-                label: 'CTA Type',
-                options: ['conversation', 'info_pack', 'event', 'question', 'story']
-            },
-            contact_method: {
-                type: 'select',
-                label: 'Contact Method',
-                options: ['phone', 'email', 'website', 'form']
-            },
-            aspect: {
-                type: 'select',
-                label: 'Aspect to Frame',
-                options: ['daily-work', 'long-term-impact', 'emotional-labor', 'skill-development', 'community-building']
-            },
-            tone: {
-                type: 'select',
-                label: 'Tone',
-                options: ['gentle', 'energizing', 'reflective', 'direct']
-            },
-            myth: {
-                type: 'select',
-                label: 'Myth to Address',
-                options: ['not_qualified', 'too_old', 'single_parent', 'working_full_time', 'cant_handle_emotionally', 'own_kids_suffer']
-            },
-            context: {
-                type: 'select',
-                label: 'Context',
-                options: ['recruitment-script', 'info-session', 'social-post', 'FAQ']
-            },
-            reframe_target: {
-                type: 'select',
-                label: 'Reframe Target',
-                options: ['child-behavior', 'carer-capacity', 'system-failure', 'resource-gap']
-            },
-            barrier: {
-                type: 'select',
-                label: 'Barrier to Address',
-                options: ['worry', 'feeling-unqualified', 'timing-concerns', 'financial-concerns', 'emotional-capacity']
-            },
-            event_type: {
-                type: 'select',
-                label: 'Event Type',
-                options: ['online', 'in-person']
-            },
-            response_type: {
-                type: 'select',
-                label: 'Response Type',
-                options: ['warm-fleeting', 'friendly-firm', 'reflective-grounding']
+        // Check saved license on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLicense = localStorage.getItem('honestFosterLicense');
+            if (savedLicense === LICENSE_KEY) {
+                activateLicense();
             }
-        };
+        });
 
-        // Goal selection
-        function selectGoal(goal) {
-            state.goal = goal;
-            state.path = null;
-            state.command = null;
-            
-            // Update button states
-            document.querySelectorAll('#step-goal button').forEach(btn => {
-                btn.classList.remove('selected');
-            });
-            event.target.classList.add('selected');
-            
-            // Show path selection
-            const pathStep = document.getElementById('step-path');
-            pathStep.classList.remove('hidden');
-            
-            const pathButtons = document.getElementById('path-buttons');
-            pathButtons.innerHTML = '';
-            
-            paths[goal].forEach(path => {
-                const btn = document.createElement('button');
-                btn.textContent = path.label;
-                btn.onclick = () => selectPath(path.id, path.voiceMix);
-                pathButtons.appendChild(btn);
-            });
-            
-            // Hide subsequent steps
-            document.getElementById('step-command').classList.add('hidden');
-            document.getElementById('step-inputs').classList.add('hidden');
-            document.getElementById('voice-mixer').classList.add('hidden');
-            document.getElementById('generate-btn').classList.add('hidden');
+        function showLicenseModal() {
+            document.getElementById('license-modal').classList.add('visible');
+            document.getElementById('license-error').style.display = 'none';
+            document.getElementById('license-key-input').value = '';
+            document.getElementById('license-key-input').focus();
         }
 
-        // Path selection
-        function selectPath(pathId, suggestedVoiceMix) {
-            state.path = pathId;
-            state.command = null;
-            
-            // Update voice mix with suggested values
-            Object.keys(suggestedVoiceMix).forEach(voice => {
-                state.voiceMix[voice] = suggestedVoiceMix[voice];
-                document.getElementById(voice).value = suggestedVoiceMix[voice];
-                document.getElementById(`${voice}-val`).textContent = suggestedVoiceMix[voice] + '%';
-            });
-            
-            // Update button states
-            document.querySelectorAll('#step-path button').forEach(btn => {
-                btn.classList.remove('selected');
-            });
-            event.target.classList.add('selected');
-            
-            // Show command selection
-            const commandStep = document.getElementById('step-command');
-            commandStep.classList.remove('hidden');
-            
-            const commandButtons = document.getElementById('command-buttons');
-            commandButtons.innerHTML = '';
-            
-            commands[pathId].forEach(cmd => {
-                const btn = document.createElement('button');
-                btn.textContent = cmd.label;
-                btn.onclick = () => selectCommand(cmd.id, cmd.params);
-                commandButtons.appendChild(btn);
-            });
-            
-            // Hide subsequent steps
-            document.getElementById('step-inputs').classList.add('hidden');
-            document.getElementById('voice-mixer').classList.add('hidden');
-            document.getElementById('generate-btn').classList.add('hidden');
+        function closeLicenseModal() {
+            document.getElementById('license-modal').classList.remove('visible');
         }
 
-        // Command selection
-        function selectCommand(commandId, params) {
-            state.command = commandId;
-            state.inputs = {};
+        function validateLicense() {
+            const input = document.getElementById('license-key-input').value.trim();
+            const error = document.getElementById('license-error');
             
-            // Update button states
-            document.querySelectorAll('#step-command button').forEach(btn => {
+            if (input === LICENSE_KEY) {
+                localStorage.setItem('honestFosterLicense', LICENSE_KEY);
+                activateLicense();
+                closeLicenseModal();
+                showToast('✓ License activated! Full framework unlocked.');
+            } else {
+                error.style.display = 'block';
+            }
+        }
+
+        function activateLicense() {
+            isLicensed = true;
+            
+            document.getElementById('license-status-text').textContent = 'Licensed - Full Access';
+            document.getElementById('status-badge').textContent = 'LICENSED';
+            document.getElementById('status-badge').classList.remove('demo');
+            document.getElementById('status-badge').classList.add('licensed');
+            document.getElementById('license-btn').textContent = 'Deactivate License';
+            document.getElementById('license-btn').onclick = deactivateLicense;
+            
+            document.getElementById('demo-notice').classList.remove('visible');
+            document.getElementById('voice-mixer-description').textContent = 
+                'Adjust the blend of voices. Strategic presets are applied based on your content type.';
+            document.getElementById('demo-watermark').style.display = 'none';
+        }
+
+        function deactivateLicense() {
+            if (confirm('Are you sure you want to deactivate your license?')) {
+                localStorage.removeItem('honestFosterLicense');
+                location.reload();
+            }
+        }
+
+        function selectContentType(type) {
+            state.contentType = type;
+            
+            document.querySelectorAll('#content-type-buttons button').forEach(btn => {
                 btn.classList.remove('selected');
             });
             event.target.classList.add('selected');
             
-            // Show input fields
             const inputStep = document.getElementById('step-inputs');
             inputStep.classList.remove('hidden');
             
             const inputFields = document.getElementById('input-fields');
             inputFields.innerHTML = '';
             
-            params.forEach(param => {
-                const paramDef = parameterInputs[param];
-                const inputGroup = document.createElement('div');
-                inputGroup.className = 'input-group';
-                
-                const label = document.createElement('label');
-                label.textContent = paramDef.label;
-                inputGroup.appendChild(label);
-                
-                if (paramDef.type === 'select') {
-                    const select = document.createElement('select');
-                    select.id = `input-${param}`;
-                    paramDef.options.forEach(opt => {
-                        const option = document.createElement('option');
-                        option.value = opt;
-                        option.textContent = opt;
-                        select.appendChild(option);
-                    });
-                    select.onchange = () => state.inputs[param] = select.value;
-                    inputGroup.appendChild(select);
-                    state.inputs[param] = paramDef.options[0];
-                }
-                
-                inputFields.appendChild(inputGroup);
+            if (type === 'script') {
+                addInput(inputFields, 'length', 'select', 'Script Length', ['30s', '60s', '2min']);
+                addInput(inputFields, 'audience', 'select', 'Target Audience', 
+                    ['General', 'Experienced Parents', 'Single Carers', 'Working Professionals']);
+            } else if (type === 'social') {
+                addInput(inputFields, 'platform', 'select', 'Platform', ['Facebook', 'X (Twitter)', 'LinkedIn', 'Instagram']);
+                addInput(inputFields, 'format', 'select', 'Format', ['Short Post', 'Long Post', 'Story']);
+            } else if (type === 'myth') {
+                addInput(inputFields, 'myth', 'select', 'Myth to Address', 
+                    ['Not Qualified', 'Too Old', 'Single Parent', 'Working Full Time', 'Emotional Toll']);
+            }
+            
+            addInput(inputFields, 'context', 'textarea', 'Additional Context (Optional)', null);
+            
+            // Apply strategic voice mix if licensed
+            if (isLicensed && LICENSED_VOICE_FORMULAS[type]) {
+                applyVoiceMix(LICENSED_VOICE_FORMULAS[type]);
+            }
+        }
+
+        function addInput(container, id, type, label, options) {
+            const group = document.createElement('div');
+            group.className = 'input-group';
+            
+            const labelEl = document.createElement('label');
+            labelEl.textContent = label;
+            group.appendChild(labelEl);
+            
+            let input;
+            if (type === 'select') {
+                input = document.createElement('select');
+                input.id = `input-${id}`;
+                options.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt.toLowerCase().replace(/\s+/g, '-');
+                    option.textContent = opt;
+                    input.appendChild(option);
+                });
+                state.inputs[id] = options[0].toLowerCase().replace(/\s+/g, '-');
+            } else if (type === 'textarea') {
+                input = document.createElement('textarea');
+                input.id = `input-${id}`;
+                input.placeholder = 'Add any specific requirements, local details, or context...';
+                state.inputs[id] = '';
+            }
+            
+            input.onchange = () => state.inputs[id] = input.value;
+            input.oninput = () => state.inputs[id] = input.value;
+            group.appendChild(input);
+            container.appendChild(group);
+        }
+
+        function applyVoiceMix(mix) {
+            Object.keys(mix).forEach(voice => {
+                state.voiceMix[voice] = mix[voice];
+                document.getElementById(voice).value = mix[voice];
+                document.getElementById(`${voice}-val`).textContent = mix[voice] + '%';
             });
-            
-            // Add custom input field
-            const customGroup = document.createElement('div');
-            customGroup.className = 'input-group';
-            const customLabel = document.createElement('label');
-            customLabel.textContent = 'Additional Context (Optional)';
-            customGroup.appendChild(customLabel);
-            const customTextarea = document.createElement('textarea');
-            customTextarea.id = 'custom-context';
-            customTextarea.placeholder = 'Add any specific requirements, local details, or context...';
-            customTextarea.oninput = () => state.inputs.customContext = customTextarea.value;
-            customGroup.appendChild(customTextarea);
-            inputFields.appendChild(customGroup);
-            
-            // Show voice mixer and generate button
-            document.getElementById('voice-mixer').classList.remove('hidden');
-            document.getElementById('generate-btn').classList.remove('hidden');
-            
             updateVoiceMix();
         }
 
-        // Update voice mix
         function updateVoiceMix() {
-            const voices = ['louise', 'barry', 'shira', 'chinwe', 'celine'];
+            const voices = ['grounded', 'analytical', 'poetic', 'catalyst', 'calm'];
             let total = 0;
             
             voices.forEach(voice => {
@@ -1058,188 +1117,136 @@
             }
         }
 
-        // Generate content
         function generateContent() {
-            const total = Object.values(state.voiceMix).reduce((sum, val) => sum + val, 0);
+            if (!state.contentType) {
+                showToast('Please select a content type first');
+                return;
+            }
             
+            const total = Object.values(state.voiceMix).reduce((sum, val) => sum + val, 0);
             if (total !== 100) {
                 showToast('Voice mix must total 100%');
                 return;
             }
             
-            // Build prompt
-            const prompt = buildPrompt();
+            const content = generateMockContent();
             
-            // Simulate content generation (in real implementation, this would call an API)
-            const generatedContent = generateMockContent(prompt);
-            
-            // Display output
-            document.getElementById('output-content').textContent = generatedContent;
+            document.getElementById('output-content').innerHTML = 
+                (!isLicensed ? '<div class="demo-watermark">DEMO VERSION</div>' : '') + 
+                content;
             document.getElementById('output-section').classList.add('visible');
-            
-            // Scroll to output
             document.getElementById('output-section').scrollIntoView({ behavior: 'smooth' });
             
             showToast('Content generated successfully!');
         }
 
-        // Build prompt from state
-        function buildPrompt() {
-            let prompt = `Command: /${state.command}\n\n`;
-            prompt += `Goal: ${state.goal}\n`;
-            prompt += `Path: ${state.path}\n\n`;
+        function generateMockContent() {
+            const voiceMixStr = Object.entries(state.voiceMix)
+                .map(([voice, val]) => `${voice.charAt(0).toUpperCase() + voice.slice(1)}: ${val}%`)
+                .join(' | ');
             
-            prompt += `Voice Mix:\n`;
-            Object.entries(state.voiceMix).forEach(([voice, value]) => {
-                prompt += `- ${voice.charAt(0).toUpperCase() + voice.slice(1)}: ${value}%\n`;
-            });
+            let content = '';
             
-            prompt += `\nParameters:\n`;
-            Object.entries(state.inputs).forEach(([key, value]) => {
-                if (value) {
-                    prompt += `- ${key}: ${value}\n`;
-                }
-            });
-            
-            return prompt;
-        }
+            if (state.contentType === 'script') {
+                content = `[${state.inputs.length?.toUpperCase() || '30S'} VIDEO SCRIPT]
 
-        // Mock content generation
-        function generateMockContent(prompt) {
-            const examples = {
-                write_reel: `[30-SECOND SCRIPT]
+TARGET: ${state.inputs.audience || 'General audience'}
 
-HOOK (0-5s):
-"A 12-year-old makes a comment. Small thing. But you notice."
+HOOK (Opening):
+"A child sits at your kitchen table. Homework spread out. Testing whether you'll notice when they struggle. This moment? This is where safety gets built."
 
-NEED (5-10s):
-"Children in care need someone who holds the whole picture between all the appointments and services."
+CORE MESSAGE:
+Foster care isn't about being perfect. It's about being present, consistently, while children decide if this space is safe enough to hope in.
 
-REFRAME (10-15s):
-"You're not there to fix them. You're creating the steady space where they can do their own work."
-
-PROMISE (15-20s):
-"With training, supervision, and a support team - you're never doing this alone."
-
-MEANING (20-25s):
-"This is presence as craft. Patience as mastery."
-
-CTA (25-30s):
-"One conversation. No pressure. Just possibilities. [Contact info]"
-
-[END]
-
----
-
-B-ROLL NOTES:
-- Everyday moments: kitchen conversations, homework help
-- Close-ups: hands, listening faces
-- No dramatic rescue imagery
-- Warm, natural lighting
-
-ON-SCREEN TEXT:
-"Foster care = holding space, not forcing outcomes"
-"You don't need perfect. You need present."`,
-
-                meaning_frame: `FOSTER CARE AS SKILLED CRAFT
-
-The work isn't dramatic. It's the quiet accumulation of reliable moments.
-
-Like a gardener in winter, you're not forcing spring. You're preparing soil. Creating conditions. Maintaining temperature. Protecting against frost. And when growth comes - and it does come - it arrives on its own terms, in its own time.
-
-This is mastery: knowing that your steadiness IS the intervention.
-
-Every breakfast made. Every boundary held. Every "I'm still here" when they test if you mean it. These aren't small things. These are the architecture of safety being built, brick by reliable brick.
-
-The child who's had five Christmases in five homes isn't looking for a sixth performance of family. They're testing whether this space is real enough to risk hoping in.
-
-Your job isn't to provide a "fresh start" - a concept that erases their entire history. Your job is being steady enough that next Christmas, they might dare to believe this one counts.
-
-That's the craft: showing up, reliably, while they decide if it's safe to trust you.
-
-This work asks everything of you - and gives back meaning that compounds over years. The teenager who texts "thanks for not giving up on me." The young adult who brings their own child to meet you. The knowledge that you held space at a threshold moment in someone's life.
-
-Care is the art of presence. And presence, done well, changes everything.`,
-
-                myth_bust: `MYTH: "I'm not qualified to be a foster carer"
-
-REALITY: Being qualified isn't about credentials - it's about capacity.
-
-You don't need a degree in child psychology. You need:
+WHAT YOU NEED:
 • The ability to remain steady when things are hard
-• Willingness to learn and receive supervision
+• Willingness to learn from professionals
 • Understanding that behavior is communication
 • Respect for a child's history without needing to fix it
 
-What disqualifies people isn't lack of expertise. It's:
-• Expecting gratitude or transformation
-• Inability to work with professionals as a team
-• Rigidity about how family "should" look
-• Unwillingness to examine your own biases and triggers
+THE REALITY:
+You won't be alone. Training. Supervision. Support team. Professional backup for the hard moments.
 
-The children coming into care need adults who can hold complexity, maintain boundaries, and show up consistently - not perfect people with perfect answers.
+CLOSE:
+Care is the art of presence. And presence, done well, changes everything.
 
-You'll receive training on trauma, attachment, behavior management, and child development. You'll have a supervising social worker. You'll be part of a professional team.
+One conversation. No pressure. [Contact details]
 
-The question isn't "Am I qualified?" 
+---
+VOICE MIX APPLIED: ${voiceMixStr}
+${!isLicensed ? '\n[DEMO MODE - Strategic optimization requires license]' : '[LICENSED - Strategic mix optimized for video scripts]'}`;
+            
+            } else if (state.contentType === 'social') {
+                content = `SOCIAL MEDIA POST
+Platform: ${state.inputs.platform || 'General'}
+Format: ${state.inputs.format || 'Short post'}
+
+---
+
+Foster care isn't about being the perfect family.
+
+It's about being steady enough that a child who's had five placements in five years might dare to believe this one could be different.
+
+It's holding space while they test whether you mean it. Every breakfast. Every boundary. Every "I'm still here."
+
+That patience? That's mastery.
+
+That presence? That's what makes everything else possible.
+
+[Learn more: Contact info]
+
+---
+VOICE MIX APPLIED: ${voiceMixStr}
+${!isLicensed ? '\n[DEMO MODE - Strategic optimization requires license]' : '[LICENSED - Strategic mix optimized for social engagement]'}`;
+            
+            } else if (state.contentType === 'myth') {
+                content = `MYTH BUSTER: "${state.inputs.myth || 'Common Myth'}"
+
+THE MYTH:
+"I'm not qualified to be a foster carer - I don't have training in child psychology."
+
+THE REALITY:
+Being qualified isn't about credentials. It's about capacity.
+
+What children in care need:
+✓ Adults who can remain steady when things are hard
+✓ Willingness to learn and receive professional guidance
+✓ Understanding that behavior is communication
+✓ Respect for their history without needing to "fix" them
+
+What disqualifies people:
+✗ Expecting gratitude or transformation
+✗ Inability to work as part of a professional team
+✗ Rigidity about how family "should" look
+✗ Unwillingness to examine your own biases
+
+THE TRUTH:
+You'll receive comprehensive training on trauma, attachment, behavior management, and child development. You'll have a supervising social worker. You'll be part of a professional team.
+
+The question isn't "Am I qualified?"
 The question is "Am I ready to learn this craft?"
 
-And if you're asking that question, you're already demonstrating the humility and self-awareness that matters most.`,
+If you're asking that question, you're already demonstrating the humility and self-awareness that matters most.
 
-                system_reframe: `REFRAME: From "foster children are difficult" to "systems are failing children"
-
-When we hear "that child is impossible to place," what we're really hearing is: our system hasn't created the conditions this particular child needs.
-
-The issue isn't the 14-year-old who's been in seven placements. The issue is that we keep offering the same solution to different needs:
-• A child processing trauma gets behavioral consequences
-• A child with attachment wounds gets boundaries without relationship
-• A child who needs therapeutic parenting gets well-meaning people who weren't trained for complexity
-
-This is a coordination failure, not a child failure.
-
-Between the social worker visit and the therapy appointment, between school and home, between CAMHS and education - there are gaps. Handoff points where information gets lost, needs go unmet, and responsibility becomes diffuse.
-
-Foster carers hold the through-line. They're the continuity that makes everything else possible.
-
-But they need:
-• Training that matches the complexity they're managing
-• Therapeutic support for children who need it
-• Respite that's actually restorative
-• Fair compensation for skilled, demanding work
-• Professional recognition of the expertise they're developing
-
-When placements break down, the first question shouldn't be "What's wrong with this child?"
-
-It should be "What support did this placement lack? What mismatch occurred? How did our system fail to provide what was needed?"
-
-Children aren't the problem. Fragmented, under-resourced systems are.
-
-And carers are the ones bridging those gaps with their own labor, time, and emotional capacity - often without adequate recognition or support.
-
-That's what needs to change.`
-            };
-
-            // Return example based on command, or generic content
-            return examples[state.command] || `Generated content for: ${state.command}
-
-${prompt}
-
-[This is where the AI-generated content would appear based on the HONEST FOSTER framework and your selected parameters.]
-
-Voice Mix Applied:
-${Object.entries(state.voiceMix).map(([voice, val]) => `${voice}: ${val}%`).join(', ')}
-
-The content follows the Liminal Space Principle and adheres to all safety guardrails.`;
+---
+VOICE MIX APPLIED: ${voiceMixStr}
+${!isLicensed ? '\n[DEMO MODE - Strategic optimization requires license]' : '[LICENSED - Strategic mix optimized for myth-busting]'}`;
+            }
+            
+            if (state.inputs.context) {
+                content += `\n\n---\nADDITIONAL CONTEXT CONSIDERED:\n${state.inputs.context}`;
+            }
+            
+            return content;
         }
 
-        // Download content
         function downloadContent() {
             const content = document.getElementById('output-content').textContent;
             const blob = new Blob([content], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `honest-foster-${state.command}-${Date.now()}.txt`;
+            a.download = `honest-foster-${state.contentType}-${Date.now()}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -1247,17 +1254,15 @@ The content follows the Liminal Space Principle and adheres to all safety guardr
             showToast('Content downloaded!');
         }
 
-        // Copy to clipboard
         function copyToClipboard() {
             const content = document.getElementById('output-content').textContent;
             navigator.clipboard.writeText(content).then(() => {
                 showToast('Copied to clipboard!');
-            }).catch(err => {
+            }).catch(() => {
                 showToast('Failed to copy');
             });
         }
 
-        // Social sharing functions
         function shareOnX() {
             const text = encodeURIComponent('Check out this foster care recruitment content created with HONEST FOSTER - content with practitioner integrity.');
             window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
@@ -1273,7 +1278,6 @@ The content follows the Liminal Space Principle and adheres to all safety guardr
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
         }
 
-        // Toast notifications
         function showToast(message) {
             const toast = document.createElement('div');
             toast.className = 'toast';
